@@ -1,0 +1,3 @@
+guard 'phpunit', :cli_after => '-c app/phpunit.xml', :tests_path => '' do
+  watch(%r{^.+Test\.php$})
+end
