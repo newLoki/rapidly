@@ -1,0 +1,7 @@
+parameters:
+#    badgy_user.example.class: Badgy\UserBundle\Example
+
+services:
+#    badgy_user.example:
+#        class: %badgy_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
