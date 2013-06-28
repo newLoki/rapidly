@@ -1,3 +1,9 @@
+#ide settings
+.idea/*
+.idea
+atlasian-ide-plugin.xml
+
+
 # Bootstrap
 app/bootstrap*
 
