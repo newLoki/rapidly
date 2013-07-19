@@ -17,7 +17,7 @@
   <h2>Kollegen-Liste</h2>
 
   <div ng-controller="ColleaguesController">
-    <table class="table-bordered">
+    <table class="table table-bordered">
       <thead>
        <tr>
          <td>#</td>
@@ -29,13 +29,17 @@
         <tr ng-repeat="colleague in colleagues">
           <td>{{colleague.id}}</td>
           <td>{{colleague.name}}</td>
+          <td>
+              <button class="btn btn-danger" ng-click="deleteColleague(colleague)">
+                <i class="icon-trash icon-white"></i> Delete
+              </button>
+          </td>
         </tr>
       </tbody>
     </table>
 
-    <form ng-submit="addColleague()">
-        <input type="text" ng-model="colleagueName"  size="30"
-               placeholder="add new colleague here">
+    <form class="form-inline" ng-submit="addColleague()">
+        <input type="text" ng-model="colleagueName" size="30" placeholder="add new colleague here"/>
         <input class="btn-primary" type="submit" value="add">
      </form>
   </div>
