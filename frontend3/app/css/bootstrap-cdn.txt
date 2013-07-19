@@ -1,0 +1,13 @@
+#
+## Bootstrap via CDN
+#
+
+# Complete incl. icons
+//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css
+
+# Complete without icons (e.g. use with Font Awesome)
+//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css
+
+# Complete JS
+//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js
+

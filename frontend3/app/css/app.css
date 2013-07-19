@@ -1,0 +1,124 @@
+/**
+ * Author's custom styles for the entire document.
+ */
+
+body {
+    /* font-family: istok-web, sans-serif; */
+    /* font-family: source-sans-pro, sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section#content {
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.container {
+    /* width: 800px !important; */
+}
+
+footer button.btn-link:hover, table a:hover{
+    text-decoration: none;
+}
+
+/* Data list */
+.row {
+    margin-bottom: 30px;
+}
+
+.span3 {
+    background-color: #E8E8E8
+}
+
+.clearfix {
+    margin: 4px;
+}
+
+.clearfix span {
+    line-height: 10px;
+    font-size: 11px;
+}
+
+.clearfix a, .clearfix a:hover {
+    color: #004080;
+    text-decoration: underline;
+}
+
+.icon-5 {
+    font-size: 6em;
+    margin-left: 4px;
+    color: #387070;
+}
+
+/**
+ * Animation styles for Angular JS
+ * Important: AngularJS  >= v.1.1.5 is required
+ */
+
+/* Collapsing items */
+.ngItemCollapse-enter, .ngItemCollapse-leave {
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+}
+.ngItemCollapse-enter.ngItemCollapse-enter-active, .ngItemCollapse-leave {
+    opacity: 1;
+    top: 0;
+    height: 30px;
+}
+.ngItemCollapse-leave.ngItemCollapse-leave-active, .ngItemCollapse-enter {
+    opacity: 0;
+    top: -50px;
+    height: 0px;
+}
+
+/* Sliding items */
+.ngItemSlide-move {
+    position: relative;
+    top: 26px;
+}
+
+.ngItemSlide-move.ngItemSlide-move-active {
+    transition: all 0.5s ease;
+    top: 0;
+    opacity: 1.0;
+}
+
+.ngItemSlide-move + div {
+    /* cannot have transition on this element */
+    /*transition: all 1s ease;*/
+    position: relative;
+    top: -26px;
+}
+
+.ngItemSlide-move.ngItemSlide-move-active + div {
+    position: relative;
+    transition: all 0.5s ease;
+    top: 0;
+    opacity: 1.0;
+}
+
+.ngItemSlide-enter {
+    position: relative;
+    opacity: 0.0;
+    height: 0;
+    left: 100px;
+}
+
+.ngItemSlide-enter.ngItemSlide-enter-active {
+    transition: all 0.5s ease;
+    opacity: 1.0;
+    left: 0;
+    height: 26px;
+}
+
+.ngItemSlide-leave {
+    position: relative;
+    opacity: 1.0;
+    left: 0;
+    height: 26px;
+}

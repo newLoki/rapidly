@@ -1,0 +1,6 @@
+#
+## Font-Awesome via CDN
+#
+
+//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css
+//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css
