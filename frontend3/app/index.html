@@ -33,41 +33,13 @@
                 <div class="navbar-inner">
                     <div class="container">
                         <a class="brand" href="#list">Gimme my Badge</a>
-                            <ul class="nav">
-                                <li>
-                                    <a href="#create"
-                                        data-toggle="tooltip" data-placement="bottom" title="Add colleague" data-original-title="Add colleague">
-                                            <i class="icon-plus icon-large"></i>
-                                    </a>
-                                </li>
-                                <li class="active">
-                                    <a href="#read"
-                                        data-toggle="tooltip" data-placement="bottom" title="List colleagues" data-original-title="List colleagues">
-                                            <i class="icon-list-ul icon-large"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#update"
-                                        data-toggle="tooltip" data-placement="bottom" title="Edit colleague" data-original-title="Edit colleague">
-                                            <i class="icon-edit icon-large"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#delete"
-                                        data-toggle="tooltip" data-placement="bottom" title="Remove colleagu" data-original-title="Remove colleague">
-                                            <i class="icon-trash icon-large"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <form class="navbar-search form-search pull-right">
-                                <div class="input-append">
-                                    <input type="text" class="span2 search-query">
-                                    <button type="button" class="btn"
-                                        data-toggle="tooltip" data-placement="bottom" title="Search" data-original-title="Search">
-                                            <i class="icon-search"></i>
-                                    </button>
-                                </div>
-                            </form>
+                        <form class="navbar-form">
+                            <input ng-model="search" ng-disabled="!list.length()" type="text" placeholder="Search for colleagues...">
+                            <button ng-show="search" ng-click="reset()" type="button" class="btn"
+                                data-toggle="tooltip" data-placement="bottom" title="Cancel search" data-original-title="Cancel search">
+                                    <i class="icon-remove icon-large"></i>
+                            </button>
+                        </form>
                     </div> <!-- /.container -->
                 </div> <!-- /.navbar-inner -->
             </div> <!-- /.navbar -->
@@ -76,31 +48,24 @@
         <section id="content">
             <div class="container">
                 <div id="app-container">
-                    <h1>Colleague List</h1>
-
-                    <hr>
-
-                    <!-- Filter form -->
-                    <h3>Search</h3>
-                    <form class="form-inline">
-                        <input ng-model="search" ng-disabled="!list.length()" type="text" placeholder="Search for..." class="qsearch-query">
-                        <button ng-show="search" ng-click="reset()" type="button" class="btn btn-warning" title="Cancel search">Cancel</button>
-                    </form>
-
-                    <hr>
+                    <div class="page-header">
+                        <h1>Colleague list <small>Decorate them!</small></h1>
+                    </div>
 
                     <!-- Create and Edit form -->
                     <h3>
-                        {{action = (itemExists) ? "Edit" : "Add"}}
+                        {{action = (itemExists) ? "Edit a colleague" : "Add a colleague to list"}}
                     </h3>
                     <form class="form-inline">
                         <input ng-model="data.name" type="text" placeholder="Type in name...">
                         <input ng-model="data.email" type="text" placeholder="Type in email address...">
-                        <button ng-click="save()" type="button" class="btn btn-primary" title="Save data">Save</button>
-                        <button ng-show="data.name || data.email" ng-click="reset()" type="button" class="btn btn-warning" title="Cancel {{action}}">Cancel</button>
+                        <button ng-click="save()" type="button" class="btn btn-primary" title="Save data">
+                            <i class="icon-save"></i>
+                        </button>
+                        <button ng-show="data.name || data.email" ng-click="reset()" type="button" class="btn" title="Cancel">
+                            <i class="icon-remove"></i>
+                        </button>
                     </form>
-
-                    <hr>
 
                     <!-- Data table -->
                     <div ng-show="list.length()">
@@ -108,9 +73,14 @@
                             <thead>
                                 <tr>
                                     <td><strong>#</strong></td>
-                                    <td><strong>Name</strong> <a ng-click="sortList()" href="#" class="pull-right"><i class="{{asc ? 'icon-sort-up' : 'icon-sort-down'}}"></i></a></td>
+                                    <td>
+                                        <strong>Name</strong>
+                                        <a ng-click="sortList()" href="#" class="pull-right">
+                                            <i class="{{asc ? 'icon-sort-up' : 'icon-sort-down'}}"></i>
+                                        </a>
+                                    </td>
                                     <td><strong>Email</strong></td>
-                                    <td><strong>Action</strong></td>
+                                    <td></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -118,9 +88,13 @@
                                     <td>{{colleague.id}}</td>
                                     <td>{{colleague.name}}</td>
                                     <td>{{colleague.email}}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary" ng-click="update({{colleague.id}})" title="Edit {{colleague.name}}...">Edit</button>
-                                        <button type="button" class="btn btn-danger" ng-click="remove({{colleague.id}})" title="Remove {{colleague.name}} from list...">Remove</button>
+                                    <td style="text-align: center;">
+                                        <button ng-click="update({{colleague.id}})" type="button" class="btn btn-primary" title="Edit {{colleague.name}}...">
+                                            <i class="icon-edit"></i>
+                                        </button>
+                                        <button ng-click="remove({{colleague.id}})" type="button" class="btn btn-danger" title="Remove {{colleague.name}} from list...">
+                                            <i class="icon-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
