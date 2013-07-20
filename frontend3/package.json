@@ -1,7 +1,7 @@
 {
-  "name": "Gimme-My-Badget",
+  "name": "Gimme-My-Badge",
   "version": "0.1.0",
-  "description": "Gimme-My-Badget build with Angular JS and Twitter Bootstrap.",
+  "description": "Gimme-My-Badge application, build with Angular JS and Twitter Bootstrap.",
   "author": "Mayflower",
   "license": "BSD",
   "dependencies": {
