@@ -19,9 +19,9 @@ ColleagueList.controller("ColleagueListController", function ($scope, $window, $
      * @return object       Colleague object.
      */
     Colleague = function (data) {
-        data.id = data.id || 0;
-        data.name = data.name || "Not specified!";
-        data.email = data.email || "Not specified!";
+        data.id = data.id || null;
+        data.name = data.name || null;
+        data.email = data.email || null;
 
         if (!(this instanceof Colleague)) {
             return new Colleague(data);
@@ -197,13 +197,20 @@ ColleagueList.controller("ColleagueListController", function ($scope, $window, $
         // and get index of selected list item
         var colleague = new Colleague($scope.data);
 
+        if (!colleague.name || !colleague.email) {
+            $window.alert("Please, provide a name and an email address.");
+            return;
+        }
+
         if ($scope.itemExists) {
             // Update existing colleague...
             $scope.list.update(colleague);
+            $window.alert("Updated colleague's entry!");
         } else {
             // ...otherwise add new colleague to list.
             colleague.setId();
             $scope.list.add(colleague);
+            $window.alert("Added new colleague to the list!");
         }
 
         $scope.reset();
