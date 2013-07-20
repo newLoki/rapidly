@@ -10,6 +10,8 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
+  'app/js/vendor/angular.js',
+  'test/lib/angular/angular-mocks.js',
   'app/js/*.js',
   'test/unit/*.unit.js'
 ];
@@ -27,11 +29,21 @@ reporters = ['progress'];
 
 
 // web server port
-port = 9876;
+port = 6789;
 
 
 // cli runner port
-runnerPort = 9100;
+runnerPort = 9898;
+
+
+// base url, where Karma runs.
+urlRoot = '/_unit-tests_/';
+
+
+// map of path-proxy pairs
+proxies = {
+  '/': 'http://localhost:8080'
+};
 
 
 // enable / disable colors in the output (reporters and logs)

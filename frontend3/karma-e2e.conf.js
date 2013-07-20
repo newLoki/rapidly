@@ -30,7 +30,17 @@ port = 9876;
 
 
 // cli runner port
-runnerPort = 9100;
+runnerPort = 8989;
+
+
+// base url, where Karma runs.
+urlRoot = '/_e2e-tests_/';
+
+
+// map of path-proxy pairs
+proxies = {
+  '/': 'http://localhost:8080'
+};
 
 
 // enable / disable colors in the output (reporters and logs)
@@ -43,7 +53,7 @@ logLevel = LOG_INFO;
 
 
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = false;
+autoWatch = true;
 
 
 // Start these browsers, currently available:

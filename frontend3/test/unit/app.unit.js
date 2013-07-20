@@ -1,14 +1,14 @@
 /**
- * Test: Contact List App
+ * Test: Colleague-List
  */
 
 /*globals angular, describe, xdescribe, beforeEach, afterEach, it, xit, expect */
 
-describe("Contact List App", function () {
+describe("Colleague-List", function () {
     "use strict";
 
     describe("Test 01", function () {
-        it("should ralways return true", function () {
+        it("should always return true", function () {
             expect(true).toBe(true);
         });
     });
