@@ -123,6 +123,9 @@
                     <p ng-hide="list.length()" id="no-data-message">
                         No colleagues found!
                     </p>
+                    <p ng-show="list.length()">
+                        Items: {{list.length()}}
+                    </p>
                 </div>
             </div>
         </section>
