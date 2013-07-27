@@ -6,7 +6,7 @@
 
 var ColleagueList = angular.module("ColleagueList", []);
 
-ColleagueList.controller("ColleagueListController", function ($scope, $window, $log) {
+ColleagueList.controller("ColleagueListController", function ($scope, $filter, $window, $log) {
     "use strict";
 
     var lastId = 4, Colleague, list, sortAsc;
@@ -146,6 +146,8 @@ ColleagueList.controller("ColleagueListController", function ($scope, $window, $
     $scope.asc = true;
     // Assign the list object to $scope.
     $scope.list = list;
+    $scope.listLength = $scope.list.store.length;
+    $scope.filteredLength = 0;
 
     /**
      * Sort colleague list.
@@ -169,6 +171,7 @@ ColleagueList.controller("ColleagueListController", function ($scope, $window, $
         $scope.data = {};
         $scope.itemExists = false;
         $scope.list.sort(sortAsc());
+        $scope.listLength = $scope.list.store.length;
     };
 
     /**
@@ -226,6 +229,19 @@ ColleagueList.controller("ColleagueListController", function ($scope, $window, $
 
         $scope.reset();
     };
+
+    /**
+     * Watch the store length and the filtered
+     * list lenght and apply both to scope vars.
+     */
+    $scope.$watch("list.store", function (store) {
+        $scope.listLength = store.length;
+    });
+
+    $scope.$watch("search", function (search) {
+        $scope.filteredLength = $filter("filter")($scope.list.store, search).length;
+    });
+
 });
 
 /**
@@ -240,6 +256,38 @@ ColleagueList.directive('badgeClock', function ($window) {
             $window.setInterval(function () {
                 iElement.text((new Date()).toLocaleTimeString());
             }, 1000);
+        }
+    };
+});
+
+
+/**
+ * Derective: item-counter
+ */
+ColleagueList.directive('itemCounter', function ($window) {
+    "use strict";
+
+    return {
+        restrict: "E",
+        template: '<p"></p>',
+        link: function ($scope, iElement, iAttrs) {
+            var notFoundMsg = "No colleagues found!";
+
+            $scope.$watch("listLength", function (listLength) {
+                iElement.text('Items: ' + listLength);
+
+                if (listLength === 0) {
+                    iElement.text(notFoundMsg);
+                }
+            });
+
+            $scope.$watch("filteredLength", function (filteredLength) {
+                iElement.text('Items: ' + filteredLength);
+
+                if (filteredLength === 0) {
+                    iElement.text(notFoundMsg);
+                }
+            });
         }
     };
 });

@@ -86,46 +86,40 @@
                     </form>
 
                     <!-- Data table -->
-                    <div ng-show="list.length()">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <td><strong>#</strong></td>
-                                    <td>
-                                        <strong>Name</strong>
-                                        <a ng-click="sortList()" href="#" class="pull-right">
-                                            <i class="{{asc ? 'icon-sort-up' : 'icon-sort-down'}}"></i>
-                                        </a>
-                                    </td>
-                                    <td><strong>Email</strong></td>
-                                    <td><strong>Actions</strong></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="colleague in list.store | filter: search">
-                                    <td>{{colleague.id}}</td>
-                                    <td>{{colleague.name}}</td>
-                                    <td>{{colleague.email}}</td>
-                                    <td>
-                                        <button ng-click="update({{colleague.id}})" type="button" class="btn btn-primary"
-                                            data-toggle="tooltip" data-placement="top" title="Edit {{colleague.name}}..." data-original-title="Edit {{colleague.name}}...">
-                                                <i class="icon-edit"></i>
-                                        </button>
-                                        <button ng-click="remove({{colleague.id}})" type="button" class="btn btn-danger"
-                                            data-toggle="tooltip" data-placement="top" title="Remove {{colleague.name}} from list..." data-original-title="Remove {{colleague.name}} from list...">
-                                                <i class="icon-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p ng-hide="list.length()" id="no-data-message">
-                        No colleagues found!
-                    </p>
-                    <p ng-show="list.length()">
-                        Items: {{list.length()}}
-                    </p>
+                    <table id="colleagues-list" class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <td><strong>#</strong></td>
+                                <td>
+                                    <strong>Name</strong>
+                                    <a ng-click="sortList()" href="#" class="pull-right">
+                                        <i class="{{asc ? 'icon-sort-up' : 'icon-sort-down'}}"></i>
+                                    </a>
+                                </td>
+                                <td><strong>Email</strong></td>
+                                <td><strong>Actions</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="colleague in list.store | filter: search">
+                                <td>{{colleague.id}}</td>
+                                <td>{{colleague.name}}</td>
+                                <td>{{colleague.email}}</td>
+                                <td>
+                                    <button ng-click="update({{colleague.id}})" type="button" class="btn btn-primary"
+                                        data-toggle="tooltip" data-placement="top" title="Edit {{colleague.name}}..." data-original-title="Edit {{colleague.name}}...">
+                                            <i class="icon-edit"></i>
+                                    </button>
+                                    <button ng-click="remove({{colleague.id}})" type="button" class="btn btn-danger"
+                                        data-toggle="tooltip" data-placement="top" title="Remove {{colleague.name}} from list..." data-original-title="Remove {{colleague.name}} from list...">
+                                            <i class="icon-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                   <!-- Item counter: custom directive -->
+                    <x-item-counter></x-item-counter>
                 </div>
             </div>
         </section>
