@@ -227,3 +227,16 @@ ColleagueList.controller("ColleagueListController", function ($scope, $window, $
         $scope.reset();
     };
 });
+
+ColleagueList.directive('clock', function ($window) {
+    "use strict";
+
+    return {
+        restrict: "E",
+        link: function (scope, element, attrs) {
+            $window.setInterval(function () {
+                element.text((new Date()).toLocaleTimeString());
+            }, 1000);
+        }
+    };
+});
