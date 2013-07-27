@@ -228,14 +228,17 @@ ColleagueList.controller("ColleagueListController", function ($scope, $window, $
     };
 });
 
-ColleagueList.directive('clock', function ($window) {
+/**
+ * Derective: clock
+ */
+ColleagueList.directive('badgeClock', function ($window) {
     "use strict";
 
     return {
         restrict: "E",
-        link: function (scope, element, attrs) {
+        link: function (scope, iElement, iAttrs) {
             $window.setInterval(function () {
-                element.text((new Date()).toLocaleTimeString());
+                iElement.text((new Date()).toLocaleTimeString());
             }, 1000);
         }
     };

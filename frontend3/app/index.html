@@ -53,7 +53,7 @@
                                 </button>
                             </form>
                             <ul class="nav pull-right">
-                                <li><a href="#"><clock></clock></a></li>
+                                <li><a href="#"><x-badge-clock></x-badge-clock></a></li>
                             </ul>
                         </div>
                     </div> <!-- /.container -->
@@ -98,7 +98,7 @@
                                         </a>
                                     </td>
                                     <td><strong>Email</strong></td>
-                                    <td></td>
+                                    <td><strong>Actions</strong></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,7 +106,7 @@
                                     <td>{{colleague.id}}</td>
                                     <td>{{colleague.name}}</td>
                                     <td>{{colleague.email}}</td>
-                                    <td style="text-align: center;">
+                                    <td>
                                         <button ng-click="update({{colleague.id}})" type="button" class="btn btn-primary"
                                             data-toggle="tooltip" data-placement="top" title="Edit {{colleague.name}}..." data-original-title="Edit {{colleague.name}}...">
                                                 <i class="icon-edit"></i>
