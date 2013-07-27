@@ -9,7 +9,7 @@ var ColleagueList = angular.module("ColleagueList", []);
 ColleagueList.controller("ColleagueListController", function ($scope, $window, $log) {
     "use strict";
 
-    var lastId = 3, Colleague, list, sortAsc;
+    var lastId = 4, Colleague, list, sortAsc;
 
     /**
      * Constructor function of the colleague object (view model).
