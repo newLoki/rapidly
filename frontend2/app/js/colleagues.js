@@ -1,23 +1,29 @@
-function ColleaguesController($scope) {
-    $scope.colleagues = [
-        {id: 1, name: "Michael"},
-        {id: 2, name: "Norbert"},
-        {id: 3, name: "Peter"}
-    ];
+function ColleaguesController($scope, $resource) {
+
+    $scope.colleagues = {};
 
     $scope.addColleague = function () {
-        $scope.colleagues.push({name: $scope.colleagueName});
+
+        var colleague = new $scope.colleague();
+        colleague.name = $scope.colleagueName;
+        colleague.$save();
+
+        $scope.load();
+
         $scope.colleagueName = '';
     };
 
-    $scope.deleteColleague = function (colleagueToDelete) {
-        var oldList = $scope.colleagues;
-        $scope.colleagues = [];
+    $scope.colleague = $resource('http://localhost\\:8888/server.php/?id=:id');
 
-        angular.forEach(oldList, function (colleague) {
-            if (colleague.$$hashKey != colleagueToDelete.$$hashKey) {
-                $scope.colleagues.push(colleague);
-            }
-        });
-    }
+    $scope.load = function () {
+        $scope.colleagues = $scope.colleague.query();
+    };
+
+    $scope.deleteColleague = function (colleagueToDelete) {
+        $scope.colleague.delete({id: colleagueToDelete.id});
+
+        $scope.load();
+    };
+
+    $scope.load();
 }

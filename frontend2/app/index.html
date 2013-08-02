@@ -1,61 +1,57 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
-  <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/bootstrap.css"/>
-  <link rel="stylesheet" href="css/app.css"/>
+    <meta charset="utf-8">
+    <title>My AngularJS App</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
 
-  <div ng-view></div>
+<h2>Kollegen-Liste</h2>
 
-  <h2>Kollegen-Liste</h2>
-
-  <div ng-controller="ColleaguesController">
+<div ng-controller="ColleaguesController">
     <table class="table table-bordered">
-      <thead>
-       <tr>
-         <td>#</td>
-         <td>Name</td>
-       </tr>
-      </th>
-      </thead>
-      <tbody>
-        <tr ng-repeat="colleague in colleagues">
-          <td>{{colleague.id}}</td>
-          <td>{{colleague.name}}</td>
-          <td>
-              <button class="btn btn-danger" ng-click="deleteColleague(colleague)">
-                <i class="icon-trash icon-white"></i> Delete
-              </button>
-          </td>
+        <thead>
+        <tr>
+            <td>#</td>
+            <td>Name</td>
         </tr>
-      </tbody>
+        </th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="colleague in colleagues">
+            <td>{{colleague.id}}</td>
+            <td>{{colleague.name}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="deleteColleague(colleague)">
+                    <i class="icon-trash icon-white"></i> Delete
+                </button>
+            </td>
+        </tr>
+        </tbody>
     </table>
 
     <form class="form-inline" ng-submit="addColleague()">
         <input type="text" ng-model="colleagueName" size="30" placeholder="add new colleague here"/>
-        <input class="btn-primary" type="submit" value="add">
-     </form>
-  </div>
+        <input class="btn btn-primary" type="submit" value="add">
+    </form>
+
+</div>
 
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-  -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/colleagues.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
-  <script src="js/bootstrap.js"></script>
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/colleagues.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
 </body>
 </html>
